@@ -19,7 +19,7 @@ public class GenericStack<T> {
     public GenericStack() {
         this.capacity = 10;
         this.elements = new Object[capacity];
-        this.top = -1;
+        this.top = -1; //  Initialized to -1 to indicate an empty stack.
     }
 
     /**
@@ -33,7 +33,7 @@ public class GenericStack<T> {
         }
         this.capacity = capacity;
         this.elements = new Object[capacity];
-        this.top = -1;
+        this.top = -1; // Initialized to -1 to indicate an empty stack.
     }
 
     /**
@@ -74,7 +74,11 @@ public class GenericStack<T> {
         if (top == -1) {
             throw new StackEmptyException("Stack is empty");
         }
-        return (T) elements[top];
+        return (T) elements[top]; // SupressWarnings because of casting to T,  The Java compiler generates
+        // a warning for this cast because it cannot guarantee that the cast is type-safe at runtime.
+        // The @SuppressWarnings("unchecked") annotation in Java is used to suppress compiler warnings
+        // about unchecked operations. It is commonly applied when working with generic types,
+        // especially in situations where type safety cannot be fully ensured at compile time.
     }
 
     /**
